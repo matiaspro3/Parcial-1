@@ -304,17 +304,12 @@ $scope.authenticate = function(provider) {
 
 $scope.Login=function(){
 //alert("Logueado!");
-  console.info("email:", $rootScope.usuarios.user);
-  console.info("pass:", $rootScope.usuarios.pass);
-  console.info("pass:", $rootScope.usuarios.dni);
-
-
-//console.info("pass", $scope.user.pass);
-//$rootScope.user.email;
-//$rootScope.user.pass;
-
-$state.go("barraMenuAbstr.inicio");     
-
+if ($rootScope.usuarios.user =="matias" && $rootScope.usuarios.pass=="1111" && $rootScope.usuarios.dni =="10000000")
+    {alert("Bienvenido Administrador");
+$state.go("barraMenuAbstr.inicio");}
+else
+{alert("No es Admin- Loguenado como Visita");
+$state.go("barraMenuAbstr.inicio");     }
 
 }
 
@@ -636,7 +631,7 @@ appAngular.controller('controlpersonagrilla', function($scope, $http) {
 
 });
 
-appAngular.controller('controlvotacionGrilla', function($scope, $http,$rootScope) {
+appAngular.controller('controlvotacionGrilla', function($scope, $http,$rootScope,$state) {
 
 
 
@@ -652,17 +647,22 @@ appAngular.controller('controlvotacionGrilla', function($scope, $http,$rootScope
           console.info('votac',$scope.votaciones);
 
 
-        $scope.Borrar=function(persona){
-        console.log("borrar");
+        $scope.Borrar=function(){
+           //console.info("antes",$rootScope.usuarios);
+$rootScope.usuarios="";
+    alert("votacion borrada");
+ $state.go("barraMenuAbstr.inicio");
+        // console.info("despues",$rootScope.usuarios);
 }
 
 
 
 
 
-    $scope.Modificar=function(id){
+    $scope.Modificar=function(){
         
-        console.log("Modificar");
+        alert("Modificar");
+
     }
 
 
