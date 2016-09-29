@@ -22,20 +22,20 @@
         <span ng-show="frmregistro.$error.required">Requerde que todos los campos son obligatorios</span>
         <br>      <br>
  
-<h1 style='color: blue'> Bienvenido {{usuario.nombre}}</h1>
+<h1 style='color: blue'> Bienvenido {{usuario.dni}}</h1>
  <br><br>
 
 
         <br>
-        <input type="number" class="form-control" id="dni" name="dni" ng-model="usuario.dni" placeholder="Ingrese su dni" required>
+        <input type="number" class="form-control" id="dni" name="dni" ng-model="usuario.dni" placeholder="Ingrese su dni" min="10000000" max="99999999" required>
         <span style="color:red" ng-show="frmregistro.dni.$dirty && frmregistro.dni.$invalid">DNI INVALIDO.</span>
       </span><br>
 <br>
 
 
-        Sexo: 
-        <input type="radio"  name="sexo" id="m" ng-model="usuario.sexo" value="m" required> M
-        <input type="radio" name="sexo" id="f" ng-model="usuario.sexo" value="f" required>  F
+        <span style="color:blue">Sexo: </span>
+        <input type="radio"  name="sexo" id="m" ng-model="usuario.sexo" value="m" required><span style="color:blue">M </span> 
+        <input type="radio" name="sexo" id="f" ng-model="usuario.sexo" value="f" required><span style="color:blue">F </span>
          <span style="color:red" ng-show="frmregistro.sexo.$invalid"> Seleccione una opcion.</span>
           </span><br>
 <br>
@@ -86,7 +86,7 @@
 
          <input type="reset"  class="btn btn-warning" > <br> <br/>
 
-        <button  class="btn btn-lg btn-success btn-block" name="login" id="login" ng-disabled="frmregistro.$invalid || usuario.password!=usuario.password2 || !usuario.lenguaje  " ng-click="Alta()"><span>Alta </span></button><br/>
+        <button  class="btn btn-lg btn-success btn-block" name="login" id="login" ng-disabled="frmregistro.$invalid " ng-click="Alta()"><span>Alta </span></button><br/>
 
         <a id="barraLogin" ng-click="Volver()"  class="btn btn-danger" >Cancelar </a>
 

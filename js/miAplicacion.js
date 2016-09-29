@@ -63,7 +63,23 @@ appAngular.config(function($stateProvider, $urlRouterProvider,$authProvider) {
     		}
     	}
     	)
+//
 
+     .state(
+      "barraMenuAbstr.votaciongrilla",{
+        url:"/votaciongrilla",
+        //templateUrl:"personagrilla.html"
+        views:{
+          "contenido":{
+            templateUrl:"Htmls/votacionGrilla.html",
+            controller:"controlvotacionGrilla"
+          }
+        }
+      }
+      )
+
+
+//
 
      .state(
       "barraMenuAbstr.perfil",{
@@ -288,8 +304,11 @@ $scope.authenticate = function(provider) {
 
 $scope.Login=function(){
 //alert("Logueado!");
-  console.info("email", $rootScope.usuarios.email);
-  console.info("pass", $rootScope.usuarios.pass);
+  console.info("email:", $rootScope.usuarios.user);
+  console.info("pass:", $rootScope.usuarios.pass);
+  console.info("pass:", $rootScope.usuarios.dni);
+
+
 //console.info("pass", $scope.user.pass);
 //$rootScope.user.email;
 //$rootScope.user.pass;
@@ -317,9 +336,9 @@ $state.go("barraMenuAbstr.inicio");
 appAngular.controller("controlAbtrac", function($scope, $state,$rootScope){
 
 $rootScope.usuarios = {
-email:'',   
-pass:'',
-pass2:''
+user:'',   
+dni:'',
+pass:''
 
 }
 $rootScope.personas = {
@@ -350,11 +369,17 @@ $scope.irGrilla=function(){
  
   
 };
+$scope.irVotacionGrilla=function(){
+
+    $state.go("barraMenuAbstr.votaciongrilla");
+ 
+  
+};
 
 
 $scope.irPerfil=function(){
     console.log($rootScope.usuarios.email);
-    if ($rootScope.usuarios.email ==""){
+    if ($rootScope.usuarios.user ==""){
       console.log("if");
     $state.go("barraMenuAbstr.perfilAlta");}
     else{ console.log("else");
@@ -389,6 +414,12 @@ appAngular.controller("controlInicio", function($scope){
 //
 appAngular.controller("controlvotar", function($scope){
 
+$scope.Alta=function(){
+
+$state.go("barraMenuAbstr.inicio");     
+
+
+}
 
 $scope.Volver= function()
 {
@@ -415,8 +446,9 @@ appAngular.controller("controlperfilAlta", function($scope,FileUploader,$rootSco
 
 $scope.Login=function(){
   //  alert("Logueado!");
-  console.info("email:", $rootScope.usuarios.email);
+  console.info("email:", $rootScope.usuarios.user);
   console.info("pass:", $rootScope.usuarios.pass);
+  console.info("pass:", $rootScope.usuarios.dni);
 
 
 $state.go("barraMenuAbstr.inicio");   
@@ -596,6 +628,41 @@ appAngular.controller('controlpersonagrilla', function($scope, $http) {
     $scope.Modificar=function(id){
         
         console.log("Modificar"+id);
+    }
+
+
+
+
+
+});
+
+appAngular.controller('controlvotacionGrilla', function($scope, $http,$rootScope) {
+
+
+
+  
+         $scope.votaciones= [
+    {user: $rootScope.usuarios.user,dni: $rootScope.usuarios.dni,pass:$rootScope.usuarios.pass}
+];
+
+
+         
+
+        
+          console.info('votac',$scope.votaciones);
+
+
+        $scope.Borrar=function(persona){
+        console.log("borrar");
+}
+
+
+
+
+
+    $scope.Modificar=function(id){
+        
+        console.log("Modificar");
     }
 
 
