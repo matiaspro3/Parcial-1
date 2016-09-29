@@ -11,9 +11,11 @@
          
     <div id="formLogin" class="container" >
            
-      <form  class="form-ingreso " >
-        <h2  style='color: blue' class="form-ingreso-heading">Ingrese sus datos</h2>
-
+      <form  class="form-ingreso " name= "frminicio" >
+        <h3 style='color: blue'> Bienvenido {{usuario.nombre}}</h3>
+        <br>
+        <h4  style='color: blue' class="form-ingreso-heading">Ingrese sus datos</h4>
+<br>
         
        
 <!--
@@ -24,11 +26,26 @@
       input type="text" class="form-control" id="nombre" name="nombre" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="usuario.nombre" placeholder="Ingrese su nombre" minlength=4  required>
 
           -->
- 
+ <!--
 
                 <input type="email" id="email"   class="form-control" placeholder="Correo electronico" required autofocus="" ng-model = "usuarios.email" >
 
-        
+     -->   
+
+
+
+     <input type="text" class="form-control" id="nombre" name="nombre" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="usuario.nombre" placeholder="Ingrese su usuario" minlength=4  required>
+       <span style="color:red" ng-show="frminicio.nombre.$dirty && frminicio.nombre.$invalid">Nombre INVALIDO  minimo 4 letras.</span>
+      </span><br>
+
+        <br>
+        <input type="number" class="form-control" id="dni" name="dni" ng-model="usuario.dni" placeholder="Ingrese su dni" 
+        min="10000000" max="99999999" required>
+        <span style="color:red" ng-show="frminicio.dni.$dirty && frminicio.dni.$invalid">DNI INVALIDO.</span>
+      </span><br>
+
+
+
         <input type="password" id="clave" minlength="7" ng-model="usuarios.pass" class="form-control" placeholder="clave" required="true">
 
         <div class="checkbox">

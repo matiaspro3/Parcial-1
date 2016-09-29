@@ -389,6 +389,12 @@ appAngular.controller("controlInicio", function($scope){
 //
 appAngular.controller("controlvotar", function($scope){
 
+
+$scope.Volver= function()
+{
+$state.go("barraMenuAbstr.inicio");    
+
+}
   });
 
 
